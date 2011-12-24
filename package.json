@@ -6,7 +6,7 @@
   "repository": {
     "url": ""
   },
-  "main": "lib/index",
+  "main": "lib/node/index",
   "engines": {
     "node": "~0.6.5"
   },
