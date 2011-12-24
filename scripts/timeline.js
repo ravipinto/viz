@@ -175,7 +175,7 @@ var timeline = {};
 
 // Fetch the data
 $.ajax({
-  url: "./twitter.json",
+  url: "./json/ebbflow.json",
   success: function(data) {
     timeline.drawTimeline(data);
   }
