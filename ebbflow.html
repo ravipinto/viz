@@ -3,13 +3,21 @@
   <head>
     <title>Ebb & Flow of the last 7 tweets</title>
     <link rel="stylesheet" href="http://nimbupani.com/stylesheets/screen.css">
-    <style type="text/css">  
-    h2 {
+    <style type="text/css">
+    html { overflow: hidden; overflow-y: visible; }  
+    
+    body { background: transparent; }
+    
+    h2.title {
       color: #666;
-      font-style: italic;
-      text-align: center;
       font-weight: normal;
-      font-size: 1em;
+      font-size: 0.8em;
+      margin: 0 0 0 5em;      
+    }
+    
+    h2.title i {
+      font-family: sans-serif;
+      font-style: normal;
     }
     
     #container { margin: 0 auto; position: relative; white-space: nowrap; }
@@ -20,21 +28,26 @@
       opacity: 0;
       position: absolute;
       top: 0; left: 0;
-      -o-transition: opacity 50ms linear;
+      -o-transition: opacity 100ms linear;
       -webkit-transition: opacity 100ms linear;      
       -moz-transition: opacity 100ms linear;
       -ms-transition: opacity 100ms linear;    
       pointer-events: none;        
-      width: 300px;
+      width: 280px;
       word-wrap: break-word;
       font-size: 12px;
       white-space: normal;      
       border-radius: 5px;
+      background: #fff;
+      background: -o-linear-gradient(#fff, #eee);      
       background: -webkit-linear-gradient(#fff, #eee);
+      background: -moz-linear-gradient(#fff, #eee);      
+      background: -ms-linear-gradient(#fff, #eee);      
       box-shadow: 0 0 5px #000;
       border: 1px solid #444;
       color: #666; 
-      padding: 10px;      
+      padding: 10px;   
+      z-index: 2;   
     }
     
     #tweetContainer.show {
@@ -75,20 +88,27 @@
     
     #container > b, #svgcontainer {
       display: inline-block;  
-      vertical-align: middle; 
+      vertical-align: top; 
       white-space: normal;   
     }
     
     #container b.start,
     #container b.end {
       height: 100%;
-      padding: 0 20px 0 0;
-      font-style: italic;  
-      color: #ccc;    
+      padding: 0 0 0 0;
+      text-transform: uppercase;
+      color: #ccc;   
+      font-size: 0.7em;
+      line-height: 1.1;
+      width: 5em;
+    }
+    
+    #container b.start {
+      text-align: right;
     }
     
     #container b.end {
-      padding: 0 0 0 20px;
+      padding: 0 0 0 0;
     }
     
     </style>
@@ -99,8 +119,8 @@
       <div id=svgcontainer></div>
       <b class=end></b>
       <div id=tweetContainer><a></a></div>      
-      <h2>Ebb & Flow of last <b></b> tweets by <a href="http://twitter.com/divya">@divya</a></h2>                         
     </div> 
+    <h2 class="title">Latest tweets from <a href="http://twitter.com/divya">@divya</a> <i>- more the retweets, darker the bar • <a href="../twittering-with-d3.html" target="_parent">read more ›</a></i></h2>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
     <script src="./lib/moment.min.js"></script>
     <script src="./lib/underscore-min.js"></script>

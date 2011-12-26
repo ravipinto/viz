@@ -18,11 +18,10 @@ var timeline = {};
   svgContainer = $("#svgcontainer"),  
   vizContainer = $("#container"),
   tweetContainer = $("#tweetContainer"),
-  numTweetsDisplay = $("#container").find("h2 b"),
   startLegend = vizContainer.find("b.start"),
   endLegend = vizContainer.find("b.end"),
   height = 10,
-  viewport = 800,
+  viewport = (document.body.clientWidth - 100),
   padding = 10,
   totalHeight,
   xAxis,
@@ -44,7 +43,6 @@ var timeline = {};
     endLegend.text("now");    
 
     vizContainer.width(viewport);
-    numTweetsDisplay.text(tweetData.length);
 
     // Initialize SVG
     var svgWidth = viewport - (startLegend.outerWidth() + endLegend.outerWidth() - 10);    
@@ -148,6 +146,7 @@ var timeline = {};
         var tweetText = d.tweet.text + "<p style='color:" + that.attr('fill') + "'><b>tweeted " + moment(d.tweet.created_at).fromNow() + "</b> with " + "<b class=retweetCount>" + cumulativeRetweetCount[d.tweet.id] + "</b> retweets</p>";
 
         link.attr("href", d.tweet.permalink).html(tweetText);
+        link.attr("target", "_parent");
 
         tweetContainer.css({
           "left": xAxis(tweetHour) + startLegend.outerWidth() + "px",
