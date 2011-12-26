@@ -138,7 +138,7 @@ var timeline = {};
     var that = d3.select(this);
     var tweetHour = diffTopOfHour(moment(d.tweet.created_at), earliestTweetDate);
     var link = tweetContainer.find("a");
-    if(link.attr("href") != d.tweet.permalink) {
+    if(link.attr("href") != d.tweet.permalink || !tweetContainer.hasClass("show")) {
       //hide and show correctly with queue
       tweetContainer.removeClass("show").delay(100).queue(function() {
         
