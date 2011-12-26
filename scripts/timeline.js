@@ -148,8 +148,13 @@ var timeline = {};
         link.attr("href", d.tweet.permalink).html(tweetText);
         link.attr("target", "_parent");
 
+        var leftValue = xAxis(tweetHour) + startLegend.outerWidth();
+        if ((viewport - leftValue)< tweetContainer.outerWidth()) {
+          leftValue = viewport - tweetContainer.outerWidth();
+        }
+
         tweetContainer.css({
-          "left": xAxis(tweetHour) + startLegend.outerWidth() + "px",
+          "left": leftValue + "px",
           "top": (+that.attr('y') + height) + "px"
         });  
       
